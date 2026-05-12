@@ -12,6 +12,11 @@ class PageActions:
     def __init__(self, page: Page) -> None:
         self.page = page
 
+    def click(self, locator):
+        logger.info("PageActions: click")
+        self.page.click(locator)
+
+
     def goto(self, url: str) -> None:
         logger.info(f"PageActions: goto '{url}'")
         self.page.goto(url)
