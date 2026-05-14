@@ -22,6 +22,7 @@ class ContexPage:
             description='ContexPage -> hot_spot'
         )
 
+
     def right_click_hot_spot(self):
         logger.info("PageActions: right click hot spot")
         self.hot_spot.right_click()
