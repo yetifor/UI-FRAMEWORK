@@ -83,3 +83,7 @@ class PageActions:
             raise RuntimeError("Expected dialog was not shown")
 
         return message
+
+    def reload_page(self) -> None:
+        logger.info("PageActions: reload page")
+        self.page.reload()
