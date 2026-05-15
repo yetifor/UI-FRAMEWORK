@@ -71,3 +71,10 @@ class WebElement:
     def set_input_files(self, file_path: Path) -> None:
         logger.info(f"{self}: set input files '{file_path}'")
         self.locator.set_input_files(file_path)
+
+    def get_content(self) -> str:
+        logger.info(f"{self}: get content")
+        result = self.get_content()
+        logger.info(f"{self}: content = '{result}'")
+        return result
+
