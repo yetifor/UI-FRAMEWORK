@@ -1,7 +1,10 @@
+import logging
+from utils.logger import LOGGER_NAME
 from pages.basic_authorization_page import BasicAuthorizationPage
 from utils.url_utils import embed_credentials_in_url
 from utils.enums_data import BasicAuthorizationEnums
-from playwright.sync_api import Page
+
+logger = logging.getLogger(LOGGER_NAME)
 
 
 class TestBasicAuthorization:
