@@ -14,25 +14,26 @@ class UploadPage:
         self.page = page
         self.actions = PageActions(page)
         self.input_file = WebElement(
-            locator = page.locator('#file-upload'),
-            description = 'UploadPage -> input file',
-            page = page,
+            locator=page.locator('#file-upload'),
+            description='UploadPage -> input file',
+            page=page,
         )
         self.upload_button = WebElement(
             locator=page.locator('#file-submit'),
-            description = 'UploadPage -> upload button',
+            description='UploadPage -> upload button',
             page=page,
         )
         self.upload_text = WebElement(
             locator=page.locator('h3'),
-            description = 'UploadPage -> upload text',
+            description='UploadPage -> upload text',
             page=page,
         )
         self.upload_file_name = WebElement(
             locator=page.locator('#uploaded-files'),
-            description = 'UploadPage -> upload file name',
+            description='UploadPage -> upload file name',
             page=page,
         )
+
     @staticmethod
     def create_test_file():
         logger.info('Creating test file.')

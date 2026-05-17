@@ -7,12 +7,14 @@ from enum import StrEnum
 
 logger = logging.getLogger(LOGGER_NAME)
 
+
 class FramesText(StrEnum):
     LEFT = 'LEFT'
     MIDDLE = 'MIDDLE'
     RIGHT = 'RIGHT'
     BOTTOM = 'BOTTOM'
     URL = 'https://the-internet.herokuapp.com/nested_frames'
+
 
 class FramesPage:
     def __init__(self, page):
@@ -38,8 +40,6 @@ class FramesPage:
             description='FramesPage -> bottom frame',
             page=page
         )
-
-
 
     def get_left_text(self):
         logger.info(f'Getting left text')

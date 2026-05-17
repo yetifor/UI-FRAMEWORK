@@ -35,9 +35,8 @@ class TestsJsAlerts:
         logger.info(f'Сгенерировано слово:{random_word}')
         logger.info('Клик по кнопке \'Click for JS Prompt\'')
         message = page_action.run_and_accept_prompt(alerts_page.click_js_prompt_button, prompt_text=random_word)
-        assert message == AlertsEnums.JS_PROMPT,\
+        assert message == AlertsEnums.JS_PROMPT, \
             f'Ожидался текст: {AlertsEnums.JS_PROMPT}, получен:  {message}'
         result = alerts_page.get_result_text()
-        assert result == AlertsEnums.JS_PROMPT_RESULT + random_word,\
+        assert result == AlertsEnums.JS_PROMPT_RESULT + random_word, \
             f'Ожидался результат: {AlertsEnums.JS_PROMPT_RESULT + random_word}, получен: {result}'
-

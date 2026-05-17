@@ -34,4 +34,3 @@ class ScrollPage:
             self.scrolling_page()
 
         return counter
-

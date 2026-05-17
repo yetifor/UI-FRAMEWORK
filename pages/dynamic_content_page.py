@@ -7,11 +7,9 @@ from ui.web_element import WebElement
 logger = logging.getLogger(LOGGER_NAME)
 
 
-
-
-
-
 class DynamicContentPage:
+    MAX_ATTEMPT = 10
+
     def __init__(self, page):
         self.page = page
         self.actions = PageActions(page)
@@ -41,13 +39,14 @@ class DynamicContentPage:
     def _reload(self):
         return self.page.reload()
 
-    def seek_duplicates(self):
+    def seek_duplicates_v2(self):
         logger.info("DynamicContentPage: seek_duplicates")
-        status = 0
-        while status < 1:
-            if self.check_duplicates():
-                status = 2
+        attempts = int(self.MAX_ATTEMPT)
+        for i in range(int(self.MAX_ATTEMPT)):
+            attempts -= 1
+            if attempts > 0 and self.check_duplicates():
+                return True
+            if attempts <= 0:
+                return False
             else:
-                self.page.reload()
-
-        return True
+                self.actions.reload_page()
