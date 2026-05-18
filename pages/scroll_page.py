@@ -22,9 +22,6 @@ class ScrollPage(BasePage):
     def get_count_paragraphs(self):
         return self.paragraphs.count()
 
-    def scrolling_page(self):
-        logger.info('Scrolling page')
-        self.page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
 
     def scroll_to_paragraphs(self):
         required_count = ScrollPage.REQUIRED_QUANTITY
