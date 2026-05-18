@@ -16,5 +16,4 @@ class BasicAuthorizationPage:
 
     def get_expected_message(self):
         text = self.expected_message.get_text_content()
-        logger.info(f'Expected message: {text}')
         return text
