@@ -6,14 +6,14 @@ from playwright.sync_api import Page
 from ui.page_actions import PageActions
 from ui.web_element import WebElement
 from ui.multi_web_element import MultiWebElement
+from pages.base_page import BasePage
 
 logger = logging.getLogger(LOGGER_NAME)
 
 
-class HoverPage:
-    def __init__(self, page: Page):
-        self.page = page
-        self.actions = PageActions(page)
+class HoverPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
         self.image_element = WebElement(
             self.page.locator('.figure'),
             description= 'Hover Page -> image user'

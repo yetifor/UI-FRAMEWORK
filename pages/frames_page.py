@@ -4,6 +4,7 @@ from ui.web_element import WebElement
 from utils.logger import LOGGER_NAME
 from ui.page_actions import PageActions
 from enum import StrEnum
+from pages.base_page import BasePage
 
 logger = logging.getLogger(LOGGER_NAME)
 
@@ -16,10 +17,9 @@ class FramesText(StrEnum):
     URL = 'https://the-internet.herokuapp.com/nested_frames'
 
 
-class FramesPage:
+class FramesPage(BasePage):
     def __init__(self, page):
-        self.page = page
-        self.actions = PageActions(page)
+        super().__init__(page)
         self.left_frame = WebElement(
             locator=page.frame(name="frame-left").locator("body"),
             description='FramesPage -> left frame',

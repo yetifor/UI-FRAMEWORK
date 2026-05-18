@@ -5,6 +5,7 @@ from ui.page_actions import PageActions
 from ui.web_element import WebElement
 from utils.logger import LOGGER_NAME
 from enum import Enum, StrEnum
+from pages.base_page import BasePage
 
 logger = logging.getLogger(LOGGER_NAME)
 
@@ -19,10 +20,9 @@ class SliderStrEnums(StrEnum):
     URL = 'https://the-internet.herokuapp.com/horizontal_slider'
 
 
-class SliderPage:
-    def __init__(self, page: Page):
-        self.page = page
-        self.actions = PageActions(page)
+class SliderPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
         self.slider = WebElement(
             self.page.locator('input[type="range"]'),
             description='SliderPage -> slider'

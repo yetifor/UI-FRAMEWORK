@@ -1,18 +1,19 @@
 import logging
 import os
-
+from pathlib import Path
 from ui.web_element import WebElement
 from playwright.sync_api import Page
 from utils.logger import LOGGER_NAME
 from ui.page_actions import PageActions
+from pages.base_page import BasePage
 
 logger = logging.getLogger(LOGGER_NAME)
 
 
-class UploadPage:
+class UploadPage(BasePage):
+
     def __init__(self, page):
-        self.page = page
-        self.actions = PageActions(page)
+        super().__init__(page)
         self.input_file = WebElement(
             locator=page.locator('#file-upload'),
             description='UploadPage -> input file',
@@ -34,17 +35,8 @@ class UploadPage:
             page=page,
         )
 
-    @staticmethod
-    def create_test_file():
-        logger.info('Creating test file.')
-        file_path = 'file.txt'
-        with open(file_path, 'w', encoding='utf-8') as file:
-            file.write('test')
-        return file_path
-
-    def upload_file(self):
-        file_path = self.create_test_file()
-        self.input_file.set_input_files(file_path=file_path)
+    def upload_file(self, file_path):
+        self.input_file.set_input_files(file_path)
         self.upload_button.click()
 
     def get_upload_text(self):

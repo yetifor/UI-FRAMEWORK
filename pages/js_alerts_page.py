@@ -7,12 +7,13 @@ from utils.logger import LOGGER_NAME
 from enum import StrEnum
 from ui.web_element import WebElement
 from ui.page_actions import PageActions
+from pages.base_page import BasePage
 
 logger = logging.getLogger(LOGGER_NAME)
 
 
 class AlertsEnums(StrEnum):
-    URL = 'https://the-internet.herokuapp.com/javascript_alerts'
+
     JS_ALERT = 'I am a JS Alert'
     JS_ALERT_RESULT = 'You successfully clicked an alert'
     JS_CONFIRM = 'I am a JS Confirm'

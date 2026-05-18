@@ -14,7 +14,7 @@ class TestUploadPage:
     def test_upload_page(self, page):
         upload_page = UploadPage(page)
         upload_page.actions.goto(TestUploadPage.URL)
-        upload_page.upload_file()
+        upload_page.upload_file(self.FILENAME)
         text_upload = upload_page.get_upload_text()
         filename = upload_page.get_upload_file_name()
         assert text_upload == self.TEXT_UPLOAD, \

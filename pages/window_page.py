@@ -3,15 +3,15 @@ from ui.web_element import WebElement
 from ui.page_actions import PageActions
 from utils.logger import LOGGER_NAME
 from pages.windows_new_page import WindowsNewPage
+from pages.base_page import BasePage
 
 logger = logging.getLogger(LOGGER_NAME)
 
 
-class WindowsPage:
+class WindowsPage(BasePage):
 
     def __init__(self, page):
-        self.page = page
-        self.actions = PageActions(page)
+        super().__init__(page)
         self.click_here_link = WebElement(
             locator=page.get_by_role('link', name='Click Here'),
             description='WindowsPage -> click here link',

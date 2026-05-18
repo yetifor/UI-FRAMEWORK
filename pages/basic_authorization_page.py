@@ -2,13 +2,14 @@ import logging
 from utils.logger import LOGGER_NAME
 from playwright.sync_api import Page
 from ui.web_element import WebElement
+from pages.base_page import BasePage
 
 logger = logging.getLogger(LOGGER_NAME)
 
 
-class BasicAuthorizationPage:
-    def __init__(self, page: Page):
-        self.page = page
+class BasicAuthorizationPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
         self.expected_message = WebElement(
             self.page.locator('body'),
             description='Basic Authorization Page -> expected_message'

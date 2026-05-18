@@ -3,16 +3,16 @@ from ui.multi_web_element import MultiWebElement
 from ui.web_element import WebElement
 from utils.logger import LOGGER_NAME
 from ui.page_actions import PageActions
+from pages.base_page import BasePage
 
 logger = logging.getLogger(LOGGER_NAME)
 
-class ScrollPage:
+class ScrollPage(BasePage):
 
     REQUIRED_QUANTITY= 10
 
     def __init__(self, page):
-        self.page = page
-        self.actions = PageActions(page)
+        super().__init__(page)
         self.paragraphs = MultiWebElement(
             locator=page.locator("jscroll-added"),
             description='ScrollPage -> paragraphs',

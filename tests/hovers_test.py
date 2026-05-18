@@ -14,6 +14,5 @@ class TestHoverPage:
         count = hover_page.get_count_users()
         for i in range(count):
             name = hover_page.get_names_and_hover(i)
-            hover_page.page.wait_for_timeout(5000)
             assert name == f'name: user{i + 1}', \
                 f'Ожидалось name: user{i + 1}, получено {name}'

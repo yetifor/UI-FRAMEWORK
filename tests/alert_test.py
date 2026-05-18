@@ -11,12 +11,13 @@ logger = logging.getLogger(LOGGER_NAME)
 
 
 class TestsJsAlerts:
+    URL = 'https://the-internet.herokuapp.com/javascript_alerts'
 
     def test_alerts(self, page):
         page_action = PageActions(page)
         alerts_page = JsAlertsPage(page)
-        logger.info(f'Переход по ссылке {AlertsEnums.URL}')
-        page.goto(AlertsEnums.URL)
+        logger.info(f'Переход по ссылке {self.URL}')
+        page.goto(self.URL)
         logger.info('Клик по кнопке \'Click for JS Alert\'')
         message = page_action.run_and_accept_alert(alerts_page.click_js_alert_button)
         assert message == AlertsEnums.JS_ALERT, \
