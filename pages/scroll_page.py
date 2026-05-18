@@ -27,10 +27,13 @@ class ScrollPage(BasePage):
         self.page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
 
     def scroll_to_paragraphs(self):
-        counter = 0
-        while counter < ScrollPage.REQUIRED_QUANTITY:
-            self.get_count_paragraphs()
-            counter += 1
-            self.scrolling_page()
-
-        return counter
+        required_count = ScrollPage.REQUIRED_QUANTITY
+        max_attempts = 20
+        for i in range(max_attempts):
+            count = self.get_count_paragraphs()
+            if count == required_count:
+                break
+            if count <  required_count:
+                last = self.paragraphs.last()
+                last.scroll_into_view_if_needed()
+        return None

@@ -10,11 +10,11 @@ logger = logging.getLogger(LOGGER_NAME)
 class BasicAuthorizationPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
-        self.expected_message = WebElement(
+        self.result_message = WebElement(
             self.page.locator('body'),
             description='Basic Authorization Page -> expected_message'
         )
 
-    def get_expected_message(self):
-        text = self.expected_message.get_text_content()
+    def get_result_message(self):
+        text = self.result_message.get_text_content()
         return text

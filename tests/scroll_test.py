@@ -11,6 +11,11 @@ class TestScrollPage:
     def test_scroll_page(self, page):
         scroll_page = ScrollPage(page)
         scroll_page.actions.goto(TestScrollPage.URL)
+
+
+        scroll_page.scroll_to_paragraphs()
+
+
         test_result = scroll_page.scroll_to_paragraphs()
         assert test_result == ScrollPage.REQUIRED_QUANTITY, \
             f'Ожидалось: {ScrollPage.REQUIRED_QUANTITY}, получено: {test_result}'

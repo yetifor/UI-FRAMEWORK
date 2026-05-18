@@ -42,17 +42,13 @@ class FramesPage(BasePage):
         )
 
     def get_left_text(self):
-        logger.info(f'Getting left text')
         return self.left_frame.get_inner_text()
 
     def get_middle_text(self):
-        logger.info(f'Getting middle text')
         return self.middle_frame.get_inner_text()
 
     def get_right_text(self):
-        logger.info(f'Getting right text')
         return self.right_frame.get_inner_text()
 
     def get_bottom_text(self):
-        logger.info(f'Getting bottom text')
         return self.bottom_frame.get_inner_text()

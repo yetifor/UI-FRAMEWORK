@@ -17,6 +17,6 @@ class TestBasicAuthorization:
         )
         page.goto(test_zone)
         authorization_page = BasicAuthorizationPage(page)
-        result = authorization_page.get_expected_message()
+        result = authorization_page.get_result_message()
         assert BasicAuthorizationEnums.TEST_BY_BASIC_AUTH_EXPECTATIONS in result, \
             f'Ожидалось: {BasicAuthorizationEnums.TEST_BY_BASIC_AUTH_EXPECTATIONS}, получено: {result}'

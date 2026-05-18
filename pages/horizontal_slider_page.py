@@ -10,16 +10,6 @@ from pages.base_page import BasePage
 logger = logging.getLogger(LOGGER_NAME)
 
 
-class SliderEnums(Enum):
-    MIN = 0.0
-    MAX = 5.0
-    STEP = 0.5
-
-
-class SliderStrEnums(StrEnum):
-    URL = 'https://the-internet.herokuapp.com/horizontal_slider'
-
-
 class SliderPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
@@ -32,25 +22,42 @@ class SliderPage(BasePage):
             description='SliderPage -> slider range'
         )
 
-    @staticmethod
-    def generate_random_value(self):
-        logger.info('Generate random value slider')
+    def get_min_value(self):
+        min = self.slider.get_attribute('min')
+        return float(min) if min else 0.0
+
+    def get_max_value(self):
+        max = self.slider.get_attribute('max')
+        return float(max) if max else 5.0
+
+    def get_step_value(self):
+        step = self.slider.get_attribute('step')
+        return float(step) if step else 0.5
+
+    def get_actual_value(self):
+        return float(self.slider_value.get_inner_text())
+
+    def get_all_values(self):
         values = [
-            i * SliderEnums.STEP.value
-            for i in range(int(SliderEnums.MAX.value / SliderEnums.STEP.value) + 1)]
-        return random.choice(values)
+            i * self.get_step_value()
+            for i in range(int(self.get_max_value() / self.get_step_value()) + 1)
+        ]
+        return values
 
-    def set_random_position_slider(self, val, page: Page):
-        logger.info('Random slider')
-        x = 0
-        while x == 0:
-            if self._actual_value(page) < val:
-                page.keyboard.press('ArrowRight')
-            else:
-                x += 1
+    def get_random_value(self):
+        return float(random.choice(self.get_all_values()))
 
+    def set_position(self, value):
+        random_value = value
+        actual_value = self.get_actual_value()
+        if actual_value == random_value:
+            return
+        if random_value > actual_value:
+            key = 'ArrowRight'
+            steps = (random_value - actual_value) / self.get_step_value()
+        else:
+            key = 'ArrowLeft'
+            steps = (actual_value - random_value) / self.get_step_value()
 
-
-    def _actual_value(self, page: Page):
-        actual = self.slider_value.get_inner_text()
-        return float(actual)
+        for i in range(int(steps)):
+            self.slider.press(key)
