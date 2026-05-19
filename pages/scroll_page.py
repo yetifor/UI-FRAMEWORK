@@ -14,7 +14,7 @@ class ScrollPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
         self.paragraphs = MultiWebElement(
-            locator=page.locator("jscroll-added"),
+            locator=page.locator(".jscroll-added"),
             description='ScrollPage -> paragraphs',
             page=page,
         )
@@ -22,15 +22,18 @@ class ScrollPage(BasePage):
     def get_count_paragraphs(self):
         return self.paragraphs.count()
 
-
-    def scroll_to_paragraphs(self):
-        required_count = ScrollPage.REQUIRED_QUANTITY
-        max_attempts = 20
-        for i in range(max_attempts):
+    def scroll_to_paragraphs(self, max_attempts: int = 60):
+        for _ in range(max_attempts):
             count = self.get_count_paragraphs()
-            if count == required_count:
-                break
-            if count <  required_count:
-                last = self.paragraphs.last()
-                last.scroll_into_view_if_needed()
-        return None
+            logger.info(f"Прокрутка {_ + 1}: найдено {count} параграфов")
+            if count >= self.REQUIRED_QUANTITY:
+                return count
+            self.paragraphs.last().scroll_into_view_if_needed()
+            try:
+                self.page.locator(".jscroll-added").nth(count - 1).wait_for(
+                    state="attached",
+                    timeout=10000
+                )
+            except RuntimeError:
+                continue
+        return self.get_count_paragraphs()
