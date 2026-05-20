@@ -40,5 +40,4 @@ class DynamicContentPage(BasePage):
                 return True
             if attempts <= 0:
                 return False
-            else:
-                self.actions.reload_page()
+            self.actions.reload_page()
