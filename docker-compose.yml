@@ -3,9 +3,9 @@ version: '3.8'
 services:
   app:
     build: .
-    image: docker-test-task
+    image: ui-framework-tests
     ports:
       - "5000:5000"
     volumes:
-      - ./test-logs:/app/logs
-      - ./test-results:/app/test-results
+      - ./test-results:/app
+    command: pytest -v --tb=short
