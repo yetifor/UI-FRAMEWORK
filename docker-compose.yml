@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: ui-framework-tests
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./test-results:/app
+    command: pytest -v --tb=short
