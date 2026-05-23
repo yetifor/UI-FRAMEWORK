@@ -3,7 +3,7 @@ import logging
 from utils.logger import LOGGER_NAME
 from pages.dynamic_content_page import DynamicContentPage
 
-logger = logging.getLogger(LOGGER_NAME)
+
 
 
 class TestDynamic:

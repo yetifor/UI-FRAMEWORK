@@ -3,7 +3,7 @@ from pages.window_page import WindowsPage
 from pages.windows_new_page import WindowsNewPage
 from utils.logger import LOGGER_NAME
 
-logger = logging.getLogger(LOGGER_NAME)
+
 
 
 class TestWindows:

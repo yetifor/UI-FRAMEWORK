@@ -2,7 +2,6 @@ import logging
 from pages.download_page import DownloadPage
 from utils.logger import LOGGER_NAME
 
-logger = logging.getLogger(LOGGER_NAME)
 
 
 class TestDownloadPage:

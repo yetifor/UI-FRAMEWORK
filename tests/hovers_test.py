@@ -2,7 +2,7 @@ import logging
 from pages.hovers_page import HoverPage
 from utils.logger import LOGGER_NAME
 
-logger = logging.getLogger(LOGGER_NAME)
+
 URL = 'https://the-internet.herokuapp.com/hovers'
 
 

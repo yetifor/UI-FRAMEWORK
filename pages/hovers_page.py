@@ -1,14 +1,14 @@
 import logging
 from pydoc import describe
 
-from  utils.logger import LOGGER_NAME
+from  utils.logger import LOGGER_NAME, setup_logger
 from playwright.sync_api import Page
 from ui.page_actions import PageActions
 from ui.web_element import WebElement
 from ui.multi_web_element import MultiWebElement
 from pages.base_page import BasePage
 
-logger = logging.getLogger(LOGGER_NAME)
+logger = setup_logger(LOGGER_NAME)
 
 
 class HoverPage(BasePage):

@@ -1,11 +1,11 @@
 import logging
 from ui.web_element import WebElement
 from ui.page_actions import PageActions
-from utils.logger import LOGGER_NAME
+from utils.logger import LOGGER_NAME, setup_logger
 from pages.windows_new_page import WindowsNewPage
 from pages.base_page import BasePage
 
-logger = logging.getLogger(LOGGER_NAME)
+logger = setup_logger(LOGGER_NAME)
 
 
 class WindowsPage(BasePage):

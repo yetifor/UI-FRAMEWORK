@@ -2,7 +2,7 @@ import logging
 from pages.scroll_page import ScrollPage
 from utils.logger import LOGGER_NAME
 
-logger = logging.getLogger(LOGGER_NAME)
+
 
 
 class TestScrollPage:

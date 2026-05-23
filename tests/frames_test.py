@@ -2,7 +2,7 @@ import logging
 from pages.frames_page import FramesPage, FramesText
 from utils.logger import LOGGER_NAME
 
-logger = logging.getLogger(LOGGER_NAME)
+
 
 
 class TestFrames:

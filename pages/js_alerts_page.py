@@ -3,13 +3,13 @@ from playwright.sync_api import Page
 from faker import Faker
 
 from ui.page_actions import PageActions
-from utils.logger import LOGGER_NAME
+from utils.logger import LOGGER_NAME, setup_logger
 from enum import StrEnum
 from ui.web_element import WebElement
 from ui.page_actions import PageActions
 from pages.base_page import BasePage
 
-logger = logging.getLogger(LOGGER_NAME)
+logger = setup_logger(LOGGER_NAME)
 
 
 class AlertsEnums(StrEnum):

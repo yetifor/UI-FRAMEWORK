@@ -4,7 +4,7 @@ from pages.basic_authorization_page import BasicAuthorizationPage
 from utils.url_utils import embed_credentials_in_url
 from utils.enums_data import BasicAuthorizationEnums
 
-logger = logging.getLogger(LOGGER_NAME)
+
 
 
 class TestBasicAuthorization:

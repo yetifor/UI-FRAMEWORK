@@ -2,7 +2,7 @@ import logging
 from pages.horizontal_slider_page import SliderPage
 from utils.logger import LOGGER_NAME
 
-logger = logging.getLogger(LOGGER_NAME)
+
 
 
 class TestHorizontalSlider:

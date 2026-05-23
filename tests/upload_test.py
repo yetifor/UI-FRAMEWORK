@@ -2,7 +2,7 @@ import logging
 from pages.upload_page import UploadPage
 from utils.logger import LOGGER_NAME
 
-logger = logging.getLogger(LOGGER_NAME)
+
 
 
 class TestUploadPage:

@@ -2,7 +2,7 @@ import logging
 from pages.contex_menu_page import  ContexPage
 from utils.logger import LOGGER_NAME
 
-logger = logging.getLogger(LOGGER_NAME)
+
 
 
 class TestContexMenu:
